@@ -1,0 +1,15 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "arn:aws:s3:::${aws_s3_bucket.S3withTerraform.id}/*",
+            "Principle": {
+                "AWS": [
+                    "{data.aws_iam_group.Bucket_Data.arn}"
+                ]
+            }
+        }
+    ]
+}
