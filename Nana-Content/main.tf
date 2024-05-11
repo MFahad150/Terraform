@@ -3,9 +3,9 @@
 
 #### Create new VPC
 resource "aws_vpc" "dev-vpc" {
-    cidr_block = "172.15.0.0/16"
+    cidr_block = var.dev-vpc-cidr_block
     tags = {
-        Name = "dev-vpc"
+        Name = var.dev-vpc-tag
     }
 }
 
@@ -18,10 +18,10 @@ output "dev-vpc_id" {
 #### Create subnet in new VPC
 resource "aws_subnet" "dev-subnet-1" {
     vpc_id = aws_vpc.dev-vpc.id
-    cidr_block = "172.15.1.0/24"
+    cidr_block = var.cidr_blocks[1].cidr_block
     availability_zone = "us-west-2a"
     tags = {
-        Name = "dev-subnet-1"
+        Name = var.cidr_blocks[1].name
     }
 }
 
